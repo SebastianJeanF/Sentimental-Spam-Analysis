@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Spam Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="static/style.css?34353">
+<link
+rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+crossorigin="anonymous"
+/>
+<script
+src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+crossorigin="anonymous"
+></script>
+</head>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/" >Sentiment Analysis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link deactive">Spam Detector</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<body style="background: linear-gradient(rgb(142, 245, 233), #ffffff)  no-repeat; background-size: 100% 100%; background-attachment: scroll">
+ <div class="login centered">
+	<h1 style="padding-top: 40px">Spam⚠️ Detector for Email📧</h1>
+  <p class="centered">
+    Type or copy a passage of text, and click on the submit button and wait for your prediction.
+  </p>
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea placeholder="Enter Some Text . . ." name="message" rows="6" cols="50" required="required" ></textarea>
+		<br> </br>
+        <button type="submit" class="butn butn-primary butn-block butn-large">Predict</button>
+
+        	<div class="results">
+
+	{% if prediction == 1%}
+	<h2 style="color:red;">Looking Spam⚠️, Be safe</h2>
+	{% elif prediction == 0%}
+				<h2 style="color:green;"><b>Not a Spam💚</b></h2>
+	{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
